@@ -1,0 +1,260 @@
+/* Layout Component Styles */
+
+.ide-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: #1e1e1e !important;
+  color: var(--vscode-editor-foreground, #cccccc);
+  font-family: var(--vscode-font-family, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif);
+  overflow: hidden;
+}
+
+/* Title Bar */
+.layout-title-bar {
+  height: 35px;
+  background-color: var(--vscode-titleBar-activeBackground, #2d2d30);
+  border-bottom: 1px solid var(--vscode-titleBar-border, #3c3c3c);
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+/* Main Content Area */
+.layout-main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Sidebar Panel */
+.layout-sidebar-panel {
+  background-color: var(--vscode-sideBar-background, #252526);
+  border-right: 1px solid var(--vscode-sideBar-border, #3c3c3c);
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.layout-sidebar-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* Activity Bar */
+.layout-activity-bar {
+  width: 48px;
+  background-color: var(--vscode-activityBar-background, #2d2d30);
+  border-right: 1px solid var(--vscode-activityBar-border, #3c3c3c);
+  flex-shrink: 0;
+  z-index: 50;
+}
+
+/* Sidebar Content */
+.layout-sidebar-content {
+  flex: 1;
+  background-color: var(--vscode-sideBar-background, #252526);
+  overflow: hidden;
+}
+
+/* Editor Panel */
+.layout-editor-panel {
+  background-color: #1e1e1e !important;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Editor Container */
+.layout-editor-container {
+  background-color: #1e1e1e !important;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Bottom Panel */
+.layout-bottom-panel {
+  background-color: var(--vscode-panel-background, #1e1e1e);
+  border-top: 1px solid var(--vscode-panel-border, #3c3c3c);
+  overflow: hidden;
+}
+
+/* Status Bar */
+.layout-status-bar {
+  height: 22px;
+  background-color: var(--vscode-statusBar-background, #007acc);
+  color: var(--vscode-statusBar-foreground, #ffffff);
+  border-top: 1px solid var(--vscode-statusBar-border, #007acc);
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+/* Resize Handles */
+.layout-resize-handle {
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.layout-resize-handle:hover {
+  background-color: var(--vscode-sash-hoverBorder, #007acc);
+}
+
+.layout-resize-handle-vertical {
+  width: 4px;
+  cursor: col-resize;
+}
+
+.layout-resize-handle-horizontal {
+  height: 4px;
+  cursor: row-resize;
+}
+
+/* Active resize state */
+.ide-layout[data-dragging="true"] {
+  user-select: none;
+}
+
+.ide-layout[data-dragging="true"] .layout-resize-handle {
+  background-color: var(--vscode-sash-hoverBorder, #007acc);
+}
+
+/* Focus indicators */
+.layout-resize-handle:focus {
+  outline: 1px solid var(--vscode-focusBorder, #007acc);
+  outline-offset: -1px;
+}
+
+/* Debug Controls (development only) */
+.layout-debug-controls {
+  position: fixed;
+  top: 50px;
+  right: 10px;
+  background-color: var(--vscode-notifications-background, #1e1e1e);
+  border: 1px solid var(--vscode-notifications-border, #454545);
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 1000;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.layout-debug-controls button {
+  background-color: var(--vscode-button-background, #0e639c);
+  color: var(--vscode-button-foreground, #ffffff);
+  border: none;
+  padding: 4px 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.layout-debug-controls button:hover {
+  background-color: var(--vscode-button-hoverBackground, #1177bb);
+}
+
+.layout-debug-controls span {
+  color: var(--vscode-descriptionForeground, #cccccc);
+  font-family: monospace;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .layout-activity-bar {
+    width: 40px;
+  }
+  
+  .layout-sidebar-panel {
+    min-width: 200px;
+  }
+  
+  .layout-bottom-panel {
+    min-height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .layout-debug-controls {
+    display: none;
+  }
+}
+
+/* Animation for panel show/hide */
+.layout-sidebar-panel {
+  transition: width 0.2s ease-in-out;
+}
+
+.layout-bottom-panel {
+  transition: height 0.2s ease-in-out;
+}
+
+/* Panel state classes */
+.layout-panel-hidden {
+  display: none;
+}
+
+.layout-panel-collapsed {
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden;
+}
+
+/* Accessibility */
+.layout-resize-handle {
+  outline: none;
+}
+
+.layout-resize-handle:focus-visible {
+  outline: 2px solid var(--vscode-focusBorder, #007acc);
+  outline-offset: -2px;
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  .layout-resize-handle {
+    border: 1px solid currentColor;
+  }
+  
+  .layout-resize-handle:hover {
+    background-color: currentColor;
+    opacity: 0.3;
+  }
+}
+
+/* Dark/Light theme variables */
+:root {
+  --layout-transition-duration: 0.2s;
+  --layout-border-radius: 0px;
+  --layout-shadow: none;
+}
+
+/* Custom scrollbars for layout panels */
+.layout-sidebar-content::-webkit-scrollbar,
+.layout-editor-container::-webkit-scrollbar,
+.layout-bottom-panel::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.layout-sidebar-content::-webkit-scrollbar-track,
+.layout-editor-container::-webkit-scrollbar-track,
+.layout-bottom-panel::-webkit-scrollbar-track {
+  background: var(--vscode-scrollbarSlider-background, #79797966);
+}
+
+.layout-sidebar-content::-webkit-scrollbar-thumb,
+.layout-editor-container::-webkit-scrollbar-thumb,
+.layout-bottom-panel::-webkit-scrollbar-thumb {
+  background: var(--vscode-scrollbarSlider-activeBackground, #bfbfbf66);
+  border-radius: 0px;
+}
+
+.layout-sidebar-content::-webkit-scrollbar-thumb:hover,
+.layout-editor-container::-webkit-scrollbar-thumb:hover,
+.layout-bottom-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--vscode-scrollbarSlider-hoverBackground, #646464b3);
+}

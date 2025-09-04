@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDE Debug Test</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background: #1e1e1e; 
+            color: white; 
+        }
+        .error { 
+            background: #d32f2f; 
+            padding: 10px; 
+            margin: 10px 0; 
+            border-radius: 4px; 
+        }
+        .success { 
+            background: #388e3c; 
+            padding: 10px; 
+            margin: 10px 0; 
+            border-radius: 4px; 
+        }
+        .info { 
+            background: #1976d2; 
+            padding: 10px; 
+            margin: 10px 0; 
+            border-radius: 4px; 
+        }
+        #results {
+            border: 1px solid #444;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            background: #2d2d2d;
+        }
+    </style>
+</head>
+<body>
+    <h1>🐛 IDE Debug Test</h1>
+    <p>Testing core functionality and imports...</p>
+    
+    <div id="results">
+        <div class="info">Running tests...</div>
+    </div>
+
+    <script type="module">
+        const results = document.getElementById('results');
+        
+        function addResult(type, message) {
+            const div = document.createElement('div');
+            div.className = type;
+            div.textContent = message;
+            results.appendChild(div);
+        }
+
+        // Test 1: Check if React is available
+        try {
+            const reactCheck = await import('react');
+            addResult('success', '✅ React import successful');
+        } catch (error) {
+            addResult('error', '❌ React import failed: ' + error.message);
+        }
+
+        // Test 2: Check Monaco Editor
+        try {
+            const monacoCheck = await import('@monaco-editor/react');
+            addResult('success', '✅ Monaco Editor import successful');
+        } catch (error) {
+            addResult('error', '❌ Monaco Editor import failed: ' + error.message);
+        }
+
+        // Test 3: Check Firebase
+        try {
+            const firebaseCheck = await import('firebase/auth');
+            addResult('success', '✅ Firebase import successful');
+        } catch (error) {
+            addResult('error', '❌ Firebase import failed: ' + error.message);
+        }
+
+        // Test 4: Check Socket.IO
+        try {
+            const socketCheck = await import('socket.io-client');
+            addResult('success', '✅ Socket.IO import successful');
+        } catch (error) {
+            addResult('error', '❌ Socket.IO import failed: ' + error.message);
+        }
+
+        // Test 5: Check if backend is accessible
+        try {
+            const response = await fetch('http://localhost:3001/health');
+            if (response.ok) {
+                const data = await response.json();
+                addResult('success', '✅ Backend server accessible: ' + data.status);
+            } else {
+                addResult('error', '❌ Backend server returned: ' + response.status);
+            }
+        } catch (error) {
+            addResult('error', '❌ Backend server not accessible: ' + error.message);
+        }
+
+        // Test 6: Test simple Monaco Editor creation
+        try {
+            const monaco = await import('monaco-editor');
+            addResult('success', '✅ Monaco Editor core import successful');
+            
+            // Try to create a simple model
+            const model = monaco.editor.createModel('console.log("test");', 'javascript');
+            if (model) {
+                addResult('success', '✅ Monaco model creation successful');
+                model.dispose();
+            }
+        } catch (error) {
+            addResult('error', '❌ Monaco Editor test failed: ' + error.message);
+        }
+
+        // Test 7: Check if services can be imported
+        try {
+            const FileService = await import('./src/platform/files/FileService.js');
+            addResult('success', '✅ FileService import successful');
+        } catch (error) {
+            addResult('error', '❌ FileService import failed: ' + error.message);
+        }
+
+        // Test 8: Check main App component
+        try {
+            const App = await import('./src/App.jsx');
+            addResult('success', '✅ App component import successful');
+        } catch (error) {
+            addResult('error', '❌ App component import failed: ' + error.message);
+        }
+
+        addResult('info', '🏁 Testing complete');
+    </script>
+</body>
+</html>

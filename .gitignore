@@ -1,0 +1,89 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Dependency directories
+backend/node_modules/
+frontend/node_modules/
+
+# Build output
+backend/dist/
+frontend/dist/
+frontend/build/
+
+# Vite/React cache
+frontend/.vite/
+frontend/.cache/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.backup
+.DS_Store
+Thumbs.db
+
+
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.code-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Uploads, storage, and temp
+backend/temp/
+backend/uploads/
+backend/storage/
+backend/logs/
+frontend/public/uploads/
+storage/
+
+# Firebase and service credentials
+frontend/src/config/firebase.js
+
+# Misc
+*.local
+*.secret
+
+# Ignore test coverage
+coverage/
+
+# Ignore user-specific files
+*.iml
+*.sublime-workspace
+*.sublime-project
+
+# Ignore backup files
+*~
+
+# Ignore Python cache (if any)
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Ignore Mac system files
+.AppleDouble
+.LSOverride
+
+# Ignore Windows system files
+$RECYCLE.BIN/
+
+# Ignore cloud IDE configs
+.cloud-ide/
+
