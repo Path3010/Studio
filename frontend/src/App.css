@@ -3,7 +3,7 @@
   /* Dark Theme Colors */
   --vscode-editor-background: #1e1e1e;
   --vscode-editor-foreground: #d4d4d4;
-  --vscode-sideBar-background: #252526;
+    --vscode-sideBar-background: #181818;
   --vscode-sideBar-foreground: #cccccc;
   --vscode-sideBar-border: #2d2d30;
   --vscode-activityBar-background: #333333;
@@ -37,12 +37,12 @@
   --vscode-widget-shadow: rgba(0, 0, 0, 0.36);
   --vscode-descriptionForeground: #9d9d9d;
   --vscode-foreground: #cccccc;
-  
+
   /* Keybinding Label Colors */
   --vscode-keybindingLabel-background: #8080802b;
   --vscode-keybindingLabel-foreground: #cccccc;
   --vscode-keybindingLabel-border: #8080802b;
-  
+
   /* Additional VS Code Colors */
   --vscode-editorGroupHeader-tabsBackground: #2d2d2d;
   --vscode-editorGroupHeader-tabsBorder: #252526;
@@ -63,17 +63,36 @@
   --vscode-scrollbarSlider-background: rgba(121, 121, 121, 0.4);
   --vscode-scrollbarSlider-hoverBackground: rgba(100, 100, 100, 0.7);
   --vscode-scrollbarSlider-activeBackground: rgba(191, 191, 191, 0.4);
-  
+
   /* Fonts */
   --vscode-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --vscode-editor-font-family: 'Cascadia Code', 'Fira Code', 'Consolas', 'Courier New', monospace;
   --vscode-font-size: 13px;
   --vscode-editor-font-size: 14px;
   --vscode-font-weight: 400;
-  
+
   /* Spacing */
   --vscode-border-radius: 3px;
   --vscode-focus-border: #007acc;
+
+  /* Standardized Theme Variables */
+  --vscode-bg: #1e1e1e;
+  --vscode-editor-bg: #1e1e1e;
+  --vscode-sidebar-bg: #181818;
+  --vscode-activity-bg: #333333;
+  --vscode-tabbar-bg: #2d2d2d;
+  --vscode-statusbar-bg: #007acc;
+  --vscode-accent: #0e639c;
+  --vscode-text: #d4d4d4;
+  --vscode-text-muted: #8a8a8a;
+  --vscode-border: #2a2a2a;
+  --vscode-selection: #264f78;
+  --vscode-hover: #2a2a2a;
+  --vscode-scrollbar: #79797966;
+  --vscode-scrollbar-hover: #646464b3;
+  
+  /* UI Font */
+  --ui-font: "Cascadia Code", "Consolas", "Menlo", monospace;
 }
 
 * {
@@ -82,31 +101,41 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #1e1e1e !important;
+  background: var(--vscode-bg) !important;
+  font-family: var(--ui-font);
+  font-size: 12px;
 }
 
 #root {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  font-family: var(--vscode-font-family);
-  font-size: var(--vscode-font-size);
-  color: var(--vscode-editor-foreground);
-  background-color: #1e1e1e !important;
+  font-family: var(--ui-font);
+  font-size: 12px;
+  color: var(--vscode-text);
+  background: var(--vscode-bg) !important;
 }
 
-.app {
+.app, .workbench, .layout {
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #1e1e1e !important;
-  color: var(--vscode-editor-foreground);
+  background: var(--vscode-bg) !important;
+  color: var(--vscode-text) !important;
   overflow: hidden;
+  font-family: var(--ui-font);
+  font-size: 12px;
+}
+
+.ui {
+  font-family: var(--ui-font);
+  font-size: 12px;
 }
 
 /* Scrollbar Styling */
@@ -132,12 +161,22 @@ html, body {
   background-color: var(--vscode-editor-background);
 }
 
-/* Monaco Editor Background Override */
-.monaco-editor, .monaco-editor-background, .monaco-editor .overflow-guard {
-  background-color: #1e1e1e !important;
+/* Monaco Editor Background Override - Only for editor area */
+.monaco-editor,
+.monaco-editor-background,
+.monaco-editor .overflow-guard,
+.editor,
+.code-editor {
+  background: var(--vscode-editor-bg) !important;
+  color: var(--vscode-text) !important;
+  font-family: var(--ui-font);
+  font-size: 13px;
+  line-height: 1.5;
 }
 
-/* Ensure all main containers use VS Code background */
-.editor-container, .monaco-workbench, .part {
-  background-color: #1e1e1e !important;
+/* Ensure only editor containers use VS Code editor background */
+.layout-editor-panel,
+.layout-editor-container,
+.editor-group {
+  background: var(--vscode-editor-bg) !important;
 }
