@@ -35,86 +35,111 @@ export const configureMonaco = () => {
   // Register code action providers
   registerCodeActionProviders()
 
-  // Define custom VS Code theme
-  monaco.editor.defineTheme('vs-code-dark-plus', {
+  // Define custom VS Code Dark+ theme
+  monaco.editor.defineTheme('vscode-dark-custom', {
     base: 'vs-dark',
     inherit: true,
     rules: [
+      // Default text
+      { token: '', foreground: 'd4d4d4' },
+      
       // JavaScript/TypeScript
-      { token: 'keyword.js', foreground: '569CD6', fontStyle: 'bold' },
-      { token: 'string.js', foreground: 'CE9178' },
-      { token: 'comment.js', foreground: '6A9955', fontStyle: 'italic' },
-      { token: 'number.js', foreground: 'B5CEA8' },
-      { token: 'regexp.js', foreground: 'D16969' },
-      { token: 'operator.js', foreground: 'D4D4D4' },
-      { token: 'type.js', foreground: '4EC9B0' },
-      { token: 'variable.js', foreground: '9CDCFE' },
-      { token: 'function.js', foreground: 'DCDCAA' },
-      { token: 'class.js', foreground: '4EC9B0' },
+      { token: 'keyword', foreground: 'c586c0' },
+      { token: 'keyword.js', foreground: 'c586c0' },
+      { token: 'keyword.ts', foreground: 'c586c0' },
+      { token: 'string', foreground: 'ce9178' },
+      { token: 'string.js', foreground: 'ce9178' },
+      { token: 'string.ts', foreground: 'ce9178' },
+      { token: 'comment', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'comment.js', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'comment.ts', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'comment.line', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'comment.block', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'number', foreground: 'b5cea8' },
+      { token: 'number.js', foreground: 'b5cea8' },
+      { token: 'number.ts', foreground: 'b5cea8' },
+      { token: 'constant', foreground: 'b5cea8' },
+      { token: 'constant.numeric', foreground: 'b5cea8' },
+      { token: 'regexp.js', foreground: 'd16969' },
+      { token: 'operator', foreground: 'd4d4d4' },
+      { token: 'operator.js', foreground: 'd4d4d4' },
+      { token: 'punctuation', foreground: 'd4d4d4' },
+      { token: 'type', foreground: '4ec9b0' },
+      { token: 'type.js', foreground: '4ec9b0' },
+      { token: 'type.ts', foreground: '4ec9b0' },
+      { token: 'interface', foreground: '4ec9b0' },
+      { token: 'variable.js', foreground: '9cdcfe' },
+      { token: 'variable.ts', foreground: '9cdcfe' },
+      { token: 'identifier', foreground: 'dcdcaa' },
+      { token: 'function', foreground: 'dcdcaa' },
+      { token: 'function.js', foreground: 'dcdcaa' },
+      { token: 'function.ts', foreground: 'dcdcaa' },
+      { token: 'class.js', foreground: '4ec9b0' },
+      { token: 'class.ts', foreground: '4ec9b0' },
       
       // Python
-      { token: 'keyword.python', foreground: '569CD6', fontStyle: 'bold' },
-      { token: 'string.python', foreground: 'CE9178' },
-      { token: 'comment.python', foreground: '6A9955', fontStyle: 'italic' },
-      { token: 'number.python', foreground: 'B5CEA8' },
-      { token: 'operator.python', foreground: 'D4D4D4' },
-      { token: 'type.python', foreground: '4EC9B0' },
-      { token: 'function.python', foreground: 'DCDCAA' },
-      { token: 'class.python', foreground: '4EC9B0' },
+      { token: 'keyword.python', foreground: 'c586c0' },
+      { token: 'string.python', foreground: 'ce9178' },
+      { token: 'comment.python', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'number.python', foreground: 'b5cea8' },
+      { token: 'operator.python', foreground: 'd4d4d4' },
+      { token: 'type.python', foreground: '4ec9b0' },
+      { token: 'function.python', foreground: 'dcdcaa' },
+      { token: 'class.python', foreground: '4ec9b0' },
       
       // HTML
-      { token: 'tag.html', foreground: '569CD6' },
-      { token: 'attribute.name.html', foreground: '9CDCFE' },
-      { token: 'attribute.value.html', foreground: 'CE9178' },
-      { token: 'string.html', foreground: 'CE9178' },
+      { token: 'tag.html', foreground: 'c586c0' },
+      { token: 'attribute.name.html', foreground: '9cdcfe' },
+      { token: 'attribute.value.html', foreground: 'ce9178' },
+      { token: 'string.html', foreground: 'ce9178' },
       
       // CSS
-      { token: 'tag.css', foreground: 'D7BA7D' },
-      { token: 'attribute.name.css', foreground: '9CDCFE' },
-      { token: 'attribute.value.css', foreground: 'CE9178' },
-      { token: 'property.css', foreground: '9CDCFE' },
-      { token: 'keyword.css', foreground: '569CD6' },
+      { token: 'tag.css', foreground: 'd7ba7d' },
+      { token: 'attribute.name.css', foreground: '9cdcfe' },
+      { token: 'attribute.value.css', foreground: 'ce9178' },
+      { token: 'property.css', foreground: '9cdcfe' },
+      { token: 'keyword.css', foreground: 'c586c0' },
       
       // JSON
-      { token: 'string.key.json', foreground: '9CDCFE' },
-      { token: 'string.value.json', foreground: 'CE9178' },
-      { token: 'number.json', foreground: 'B5CEA8' },
-      { token: 'keyword.json', foreground: '569CD6' },
+      { token: 'string.key.json', foreground: '9cdcfe' },
+      { token: 'string.value.json', foreground: 'ce9178' },
+      { token: 'number.json', foreground: 'b5cea8' },
+      { token: 'keyword.json', foreground: 'c586c0' },
       
       // Java
-      { token: 'keyword.java', foreground: '569CD6', fontStyle: 'bold' },
-      { token: 'string.java', foreground: 'CE9178' },
-      { token: 'comment.java', foreground: '6A9955', fontStyle: 'italic' },
-      { token: 'type.java', foreground: '4EC9B0' },
-      { token: 'class.java', foreground: '4EC9B0' },
+      { token: 'keyword.java', foreground: 'c586c0' },
+      { token: 'string.java', foreground: 'ce9178' },
+      { token: 'comment.java', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'type.java', foreground: '4ec9b0' },
+      { token: 'class.java', foreground: '4ec9b0' },
       
       // C/C++
-      { token: 'keyword.cpp', foreground: '569CD6', fontStyle: 'bold' },
-      { token: 'string.cpp', foreground: 'CE9178' },
-      { token: 'comment.cpp', foreground: '6A9955', fontStyle: 'italic' },
-      { token: 'type.cpp', foreground: '4EC9B0' },
-      { token: 'function.cpp', foreground: 'DCDCAA' },
+      { token: 'keyword.cpp', foreground: 'c586c0' },
+      { token: 'string.cpp', foreground: 'ce9178' },
+      { token: 'comment.cpp', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'type.cpp', foreground: '4ec9b0' },
+      { token: 'function.cpp', foreground: 'dcdcaa' },
       
       // Go
-      { token: 'keyword.go', foreground: '569CD6', fontStyle: 'bold' },
-      { token: 'string.go', foreground: 'CE9178' },
-      { token: 'comment.go', foreground: '6A9955', fontStyle: 'italic' },
-      { token: 'type.go', foreground: '4EC9B0' },
-      { token: 'function.go', foreground: 'DCDCAA' },
+      { token: 'keyword.go', foreground: 'c586c0' },
+      { token: 'string.go', foreground: 'ce9178' },
+      { token: 'comment.go', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'type.go', foreground: '4ec9b0' },
+      { token: 'function.go', foreground: 'dcdcaa' },
       
       // Rust
-      { token: 'keyword.rust', foreground: '569CD6', fontStyle: 'bold' },
-      { token: 'string.rust', foreground: 'CE9178' },
-      { token: 'comment.rust', foreground: '6A9955', fontStyle: 'italic' },
-      { token: 'type.rust', foreground: '4EC9B0' },
-      { token: 'function.rust', foreground: 'DCDCAA' },
+      { token: 'keyword.rust', foreground: 'c586c0' },
+      { token: 'string.rust', foreground: 'ce9178' },
+      { token: 'comment.rust', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'type.rust', foreground: '4ec9b0' },
+      { token: 'function.rust', foreground: 'dcdcaa' },
       
       // PHP
-      { token: 'keyword.php', foreground: '569CD6', fontStyle: 'bold' },
-      { token: 'string.php', foreground: 'CE9178' },
-      { token: 'comment.php', foreground: '6A9955', fontStyle: 'italic' },
-      { token: 'variable.php', foreground: '9CDCFE' },
-      { token: 'function.php', foreground: 'DCDCAA' },
+      { token: 'keyword.php', foreground: 'c586c0' },
+      { token: 'string.php', foreground: 'ce9178' },
+      { token: 'comment.php', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'variable.php', foreground: '9cdcfe' },
+      { token: 'function.php', foreground: 'dcdcaa' },
     ],
     colors: {
       'editor.background': '#1e1e1e',
@@ -127,7 +152,7 @@ export const configureMonaco = () => {
       'editorLineNumber.activeForeground': '#c6c6c6',
       'editorIndentGuide.background': '#404040',
       'editorIndentGuide.activeBackground': '#707070',
-      'editorWhitespace.foreground': '#404040',
+      'editorWhitespace.foreground': '#2b2b2b',
       'editorBracketMatch.background': '#0064001a',
       'editorBracketMatch.border': '#888888',
       'editorError.foreground': '#f14c4c',
@@ -218,7 +243,7 @@ export const configureMonaco = () => {
   )
   
   // Set theme
-  monaco.editor.setTheme('vs-code-dark-plus')
+  monaco.editor.setTheme('vscode-dark-custom')
 }
 
 // Language mappings for file extensions

@@ -3,12 +3,12 @@
   /* Dark Theme Colors */
   --vscode-editor-background: #1e1e1e;
   --vscode-editor-foreground: #d4d4d4;
-    --vscode-sideBar-background: #181818;
+  --vscode-sideBar-background: #181818;
   --vscode-sideBar-foreground: #cccccc;
   --vscode-sideBar-border: #2d2d30;
   --vscode-activityBar-background: #333333;
   --vscode-activityBar-foreground: #ffffff;
-  --vscode-activityBar-activeBorder: #007acc;
+  --vscode-activityBar-activeBorder: #007acc; 
   --vscode-statusBar-background: #007acc;
   --vscode-statusBar-foreground: #ffffff;
   --vscode-statusBar-noFolderBackground: #68217a;

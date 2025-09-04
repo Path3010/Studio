@@ -74,6 +74,9 @@ export const configureMonaco = () => {
   // Setup advanced language features
   setupAdvancedLanguageFeatures()
 
+  // Apply our custom VS Code Dark+ theme
+  monaco.editor.setTheme('vscode-dark-custom')
+
   console.log('[Monaco] Advanced configuration complete')
 }
 
@@ -504,53 +507,78 @@ function registerSemanticTokenProviders() {
 }
 
 function defineAdvancedThemes() {
-  // VS Code Dark+ theme (enhanced)
-  monaco.editor.defineTheme('vs-code-dark-plus', {
+  // VS Code Dark+ Custom theme
+  monaco.editor.defineTheme('vscode-dark-custom', {
     base: 'vs-dark',
     inherit: true,
     rules: [
+      // Default text
+      { token: '', foreground: 'd4d4d4' },
+      
       // JavaScript/TypeScript
-      { token: 'keyword.js', foreground: '569CD6', fontStyle: 'bold' },
-      { token: 'string.js', foreground: 'CE9178' },
-      { token: 'comment.js', foreground: '6A9955', fontStyle: 'italic' },
-      { token: 'number.js', foreground: 'B5CEA8' },
-      { token: 'regexp.js', foreground: 'D16969' },
-      { token: 'operator.js', foreground: 'D4D4D4' },
-      { token: 'type.js', foreground: '4EC9B0' },
-      { token: 'variable.js', foreground: '9CDCFE' },
-      { token: 'function.js', foreground: 'DCDCAA' },
-      { token: 'class.js', foreground: '4EC9B0' },
+      { token: 'keyword', foreground: 'c586c0' },
+      { token: 'keyword.js', foreground: 'c586c0' },
+      { token: 'keyword.ts', foreground: 'c586c0' },
+      { token: 'string', foreground: 'ce9178' },
+      { token: 'string.js', foreground: 'ce9178' },
+      { token: 'string.ts', foreground: 'ce9178' },
+      { token: 'comment', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'comment.js', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'comment.ts', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'comment.line', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'comment.block', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'number', foreground: 'b5cea8' },
+      { token: 'number.js', foreground: 'b5cea8' },
+      { token: 'number.ts', foreground: 'b5cea8' },
+      { token: 'constant', foreground: 'b5cea8' },
+      { token: 'constant.numeric', foreground: 'b5cea8' },
+      { token: 'regexp.js', foreground: 'd16969' },
+      { token: 'operator', foreground: 'd4d4d4' },
+      { token: 'operator.js', foreground: 'd4d4d4' },
+      { token: 'punctuation', foreground: 'd4d4d4' },
+      { token: 'type', foreground: '4ec9b0' },
+      { token: 'type.js', foreground: '4ec9b0' },
+      { token: 'type.ts', foreground: '4ec9b0' },
+      { token: 'interface', foreground: '4ec9b0' },
+      { token: 'variable.js', foreground: '9cdcfe' },
+      { token: 'variable.ts', foreground: '9cdcfe' },
+      { token: 'identifier', foreground: 'dcdcaa' },
+      { token: 'function', foreground: 'dcdcaa' },
+      { token: 'function.js', foreground: 'dcdcaa' },
+      { token: 'function.ts', foreground: 'dcdcaa' },
+      { token: 'class.js', foreground: '4ec9b0' },
+      { token: 'class.ts', foreground: '4ec9b0' },
       
       // Python
-      { token: 'keyword.python', foreground: 'FF7B72' },
-      { token: 'string.python', foreground: 'A5C261' },
-      { token: 'comment.python', foreground: '8B949E', fontStyle: 'italic' },
-      { token: 'number.python', foreground: '79C0FF' },
-      { token: 'function.python', foreground: 'D2A8FF' },
+      { token: 'keyword.python', foreground: 'c586c0' },
+      { token: 'string.python', foreground: 'ce9178' },
+      { token: 'comment.python', foreground: '6a9955', fontStyle: 'italic' },
+      { token: 'number.python', foreground: 'b5cea8' },
+      { token: 'function.python', foreground: 'dcdcaa' },
       
       // HTML
-      { token: 'tag.html', foreground: '569CD6' },
-      { token: 'attribute.name.html', foreground: '9CDCFE' },
-      { token: 'attribute.value.html', foreground: 'CE9178' },
+      { token: 'tag.html', foreground: 'c586c0' },
+      { token: 'attribute.name.html', foreground: '9cdcfe' },
+      { token: 'attribute.value.html', foreground: 'ce9178' },
       
       // CSS
-      { token: 'property.css', foreground: '9CDCFE' },
-      { token: 'value.css', foreground: 'CE9178' },
-      { token: 'selector.css', foreground: 'D7BA7D' },
+      { token: 'property.css', foreground: '9cdcfe' },
+      { token: 'value.css', foreground: 'ce9178' },
+      { token: 'selector.css', foreground: 'd7ba7d' },
       
       // JSON
-      { token: 'key.json', foreground: '9CDCFE' },
-      { token: 'value.json', foreground: 'CE9178' },
-      { token: 'number.json', foreground: 'B5CEA8' }
+      { token: 'key.json', foreground: '9cdcfe' },
+      { token: 'value.json', foreground: 'ce9178' },
+      { token: 'number.json', foreground: 'b5cea8' }
     ],
     colors: {
-      'editor.background': '#1E1E1E',
-      'editor.foreground': '#D4D4D4',
-      'editor.lineHighlightBackground': '#2A2D2E',
-      'editor.selectionBackground': '#264F78',
-      'editor.inactiveSelectionBackground': '#3A3D41',
-      'editorCursor.foreground': '#AEAFAD',
-      'editorWhitespace.foreground': '#3B3A32',
+      'editor.background': '#1e1e1e',
+      'editor.foreground': '#d4d4d4',
+      'editor.lineHighlightBackground': '#2a2a2a',
+      'editor.selectionBackground': '#264f78',
+      'editor.inactiveSelectionBackground': '#3a3d41',
+      'editorCursor.foreground': '#aeafad',
+      'editorWhitespace.foreground': '#2b2b2b',
       'editorIndentGuide.activeBackground': '#707070',
       'editorIndentGuide.background': '#404040'
     }
